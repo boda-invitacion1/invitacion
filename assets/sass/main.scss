@@ -1,0 +1,226 @@
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'libs/vendor';
+@import 'libs/breakpoints';
+@import 'libs/html-grid';
+@import 'libs/fixed-grid';
+@import 'fontawesome-all.min.css';
+@import url('https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:900');
+
+/*
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+
+/* Carousel */
+
+.carousel {
+	position: relative;
+	overflow: hidden;
+	padding: 2em 0 2em 0;
+	margin-bottom: 0;
+
+	.forward,
+	.backward {
+		position: absolute;
+		top: 50%;
+		width: 6em;
+		height: 12em;
+		margin-top: -6em;
+		cursor: pointer;
+
+		&:before {
+			content: '';
+			display: block;
+			width: 6em;
+			height: 6em;
+			border-radius: 100%;
+			background-color: rgba(72, 57, 73, 0.5);
+			position: absolute;
+			top: 50%;
+			margin-top: -3em;
+			-moz-transition: background-color 0.35s ease-in-out;
+			-webkit-transition: background-color 0.35s ease-in-out;
+			-o-transition: background-color 0.35s ease-in-out;
+			-ms-transition: background-color 0.35s ease-in-out;
+			transition: background-color 0.35s ease-in-out;
+			-webkit-backface-visibility: hidden;
+		}
+
+		&:after {
+			content: '';
+			width: 3em;
+			height: 3em;
+			position: absolute;
+			top: 50%;
+			margin: -1.5em 0 0 0;
+			background: url('images/arrow.svg') no-repeat center center;
+		}
+
+		&:hover {
+			&:before {
+				background-color: rgba(239, 131, 118, 0.75);
+			}
+		}
+	}
+
+	.forward {
+		right: 0;
+
+		&:before {
+			right: -3em;
+		}
+
+		&:after {
+			right: -0.25em;
+		}
+	}
+
+	.backward {
+		left: 0;
+
+		&:before {
+			left: -3em;
+		}
+
+		&:after {
+			left: -0.25em;
+			@include vendor('transform', 'scaleX(-1)');
+		}
+	}
+
+	.reel {
+		white-space: nowrap;
+		position: relative;
+		-webkit-overflow-scrolling: touch;
+		padding: 0 2em 0 2em;
+	}
+
+	article {
+		display: inline-block;
+		width: 18em;
+		background: #fff;
+		text-align: center;
+		padding: 0 1em 3em 1em;
+		margin: 0 2em 0 0;
+		white-space: normal;
+		opacity: 1.0;
+		@include vendor('transition', 'opacity 0.75s ease-in-out');
+
+		&.loading {
+			opacity: 0;
+		}
+
+		.image {
+			position: relative;
+			left: -1em;
+			top: 0;
+			width: auto;
+			margin-right: -2em;
+			margin-bottom: 3em;
+		}
+
+		p {
+			text-align: center;
+		}
+	}
+}
+
+// Breakpoints.
+
+@include breakpoints((default: (1681px, null),
+		xlarge: (1281px, 1680px),
+		large: (981px, 1280px),
+		medium: (737px, 980px),
+		small: (481px, 736px),
+		xsmall: (361px, 480px),
+		wide: (1281px, 1680px),
+		xxsmall: (null, 360px)));
+
+/*Medium */
+
+@include breakpoint('<=medium') {
+
+	/* Carousel */
+
+	.carousel {
+		padding: 1.25em 0 1.25em 0;
+
+		article {
+			width: 18em;
+			margin: 0 1em 0 0;
+		}
+	}
+
+}
+
+// Mixins.
+
+
+@mixin color($p) {
+	@include color-typography($p);
+	@include color-box($p);
+	@include color-button($p);
+	@include color-form($p);
+	@include color-list($p);
+	@include color-section($p);
+	@include color-table($p);
+	@include color-pagination($p);
+
+
+}
+
+/* Wide */
+
+@include breakpoint('<=wide') {
+
+
+	/* Carousel */
+
+	.carousel {
+		padding: 1.5em 0 1.5em 0;
+
+		.reel {
+			padding: 0 1.5em 0 1.5em;
+		}
+
+		article {
+			width: 18em;
+			margin: 0 1.25em 0 0;
+		}
+	}
+
+}
+
+// Base.
+
+@import 'base/reset';
+@import 'base/page';
+@import 'base/typography';
+
+// Component.
+
+@import 'components/row';
+@import 'components/box';
+@import 'components/button';
+@import 'components/form';
+@import 'components/icon';
+@import 'components/image';
+@import 'components/actions';
+@import 'components/icons';
+@import 'components/list';
+@import 'components/section';
+@import 'components/table';
+@import 'components/pagination';
+
+// Layout.
+
+@import 'layout/wrapper';
+@import 'layout/intro';
+@import 'layout/header';
+@import 'layout/nav';
+@import 'layout/main';
+@import 'layout/footer';
+@import 'layout/navPanel';
